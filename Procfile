@@ -1,1 +1,1 @@
-web: gunicorn flaskr:app --preload  
+web: gunicorn flaskr:create_app --preload  
