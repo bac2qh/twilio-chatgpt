@@ -8,6 +8,23 @@
 {% endblock %}
 
 {% block content %}
+    <div>
+        <nav>
+            <div>
+                <h1>
+                    <a href="/">Xin's Personal Site</a>
+                </h1>
+            </div>
+            <ul>
+                <li>
+                    <a href="{{ url_for('auth.login') }}">Log In</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('auth.register') }}">Register</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
     {% for post in posts %}
         <article class="post">
             <header>

@@ -1,6 +1,8 @@
 .env
 
 venv/
+node_modules/
+package.json
 
 *.pyc
 __pycache__/
