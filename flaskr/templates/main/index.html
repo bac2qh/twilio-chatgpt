@@ -1,46 +1,51 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}Posts{% endblock %}</h1>
-    {% if g.user %}
-        <a class="action" href="{{ url_for('main.create') }}">New</a>
-    {% endif %}
+    <h1 class="p-3 text-2xl">{% block title %}Posts{% endblock %}</h1>
+    <button>
+        <span class="btn btn-sm btn-success">
+            {% if g.user %}
+                <a class="action" href="{{ url_for('main.create') }}">New</a>
+            {% endif %}
+        </span>
+    </button>
 {% endblock %}
 
 {% block content %}
-    <div>
-        <nav>
-            <div>
-                <h1 class="text-4xl">
-                    <a href="/">Xin's Personal Site</a>
-                </h1>
-            </div>
-            <ul>
-                <li>
-                    <a href="{{ url_for('auth.login') }}">Log In</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('auth.register') }}">Register</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
     {% for post in posts %}
-        <article class="post">
-            <header>
-                <div>
-                    <h1 class="text-4xl font-mono">{{ post['title'] }}</h1>
-                    <div class="font-light">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
-                </div>
-                {% if g.user['id'] == post['author_id'] %}
+        <div class="flex flex-col p-4 ml-2 max-w-md rounded overflow-hidden shadow-lg">
+            <img class="w-full" src="{{ post['img'] }}" alt="User photo link broken">
+            <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">{{ post['title'] }}</div>
+            <p class="text-sm font-light italic">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</p>
+            <p class="text-gray-700 text-base py-2">
+                {{ post['body'] }}
+            </p>
+            {% if g.user['id'] == post['author_id'] %}
+                <button class="bg-sky-600 hover:bg-blue-400 text-white text-sm font-bold m-1 p-1 border-b-4 border-blue-700 hover:border-blue-500 rounded">
                     <a class="font-light" href="{{ url_for('main.update', id=post['id']) }}">Edit</a>
-                {% endif %} 
+                </button>
+            {% endif %} 
+        </div>
+        <!-- <article class="flex flex-col py-4">
+            <header class="p-3">
+                <div class="flex justify-between">
+                    <div class="font-light">
+                        <h1 class="text-xl text-sky-400 font-mono">{{ post['title'] }}</h1>
+                        <p class="text-sm font-light italic">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</p>
+                    </div>
+                    {% if g.user['id'] == post['author_id'] %}
+                        <button class="bg-sky-600 hover:bg-blue-400 text-white text-sm font-bold m-1 p-1 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                            <a class="font-light" href="{{ url_for('main.update', id=post['id']) }}">Edit</a>
+                        </button>
+                    {% endif %} 
+                </div>
             </header>
-            <p class="font-extralight">{{ post['body'] }}</p>
-        </article>
-        {% if not loop.last %}
+            <p class="px-3 py-1 font-extralight">{{ post['body'] }}</p>
+        </article> -->
+        <!-- {% if not loop.last %}
             <hr>
-        {% endif %} 
+        {% endif %}  -->
     {% endfor %}
 {% endblock %} 
 

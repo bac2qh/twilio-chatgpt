@@ -4,11 +4,11 @@
     <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
 </head>
 
-<nav class="flex justify-between bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-teal-600">
+<nav class="flex justify-between bg-slate-200 border-gray-400 px-2 sm:px-4 py-2.5 rounded dark:bg-teal-600">
     <div class="container flex flex-wrap items-center justify-between">
         <a href="https://bulbapedia.bulbagarden.net/wiki/Squirtle_(Pok%C3%A9mon)" class="flex items-center">
             <img src="../static/HupuBBS_190515095413-1242822577.jpg" class="h-6 mr-3 sm:h-9" alt="Ideas Hub Logo" />
-            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Ideas Hub</span>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap text-sky-800 dark:text-white">Ideas Hub</span>
         </a>
         <div class="flex flex-wrap" id="navbar-default">
             <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-slate-700 md:dark:bg-slate-700 dark:border-gray-700">
@@ -27,14 +27,12 @@
             </ul>
         </div>
     </div>
-    <div class="flex flex-wrap mb-auto my-auto" id="navbar-default">
+    <div class="flex flex-wrap mb-auto my-auto text-slate-600" id="navbar-default">
         <ul>
             {% if g.user %}
-                <li class="block text-slate-300 font-bold"><span>{{ g.user['username'] }}</span></li>
-                <li class="block text-slate-300 font-extralight"><a href="{{ url_for('auth.logout') }}">log out</a></li> 
+                <li class="block font-bold"><span>{{ g.user['username'] }}</span></li>
+                <li class="block font-extralight"><a href="{{ url_for('auth.logout') }}">log out</a></li> 
             {% else %} 
-                <!-- <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-                <li><a href="{{ url_for('auth.login') }}">Log In</a></li> -->
                 <li class="block py-2 pl-3 pr-4 text-sky-800"><a href="{{ url_for('auth.register') }}">Register</a>
                 <li class="block py-2 pl-3 pr-4 text-sky-800"><a href="{{ url_for('auth.login') }}">Log In</a>
             {% endif %} 
