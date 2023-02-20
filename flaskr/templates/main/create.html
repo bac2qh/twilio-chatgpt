@@ -1,17 +1,33 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}New Post{% endblock %}</h1>
+    <div class="flex justify-between px-5 py-3 ml-4 mr-4">
+        <h1 class="text-3xl text-slate-400">{% block title %}New Post{% endblock %}</h1>
+    </div>
 {% endblock %} 
 
 {% block content %} 
-    <form method="post">
-        <label for="title">Title</label>
-        <input name="title" id="title" value="{{ request.form['title'] }}" required>
-        <label for="body">Body</label>
-        <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
-        <label for="img">Image URL</label>
-        <input name="img" id="img" value="{{ request.form['img'] }}" >
-        <input type="submit" value="Save">
-    </form>
+    <div>
+        <form method="post" class="flex flex-col py-2 text-gray-400 w-1/2 ml-10">
+
+            <div class="relative z-0 w-full mb-6 group">
+                <input name="title" id="title" value="{{ request.form[title]  }}" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" required />
+                <label for="title" class="peer-focus:font-medium absolute text-sm  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <textarea name="body" id="body" class="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">{{ request.form['body']  }}</textarea>
+                <label for="body" class="peer-focus:font-medium absolute text-sm  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Body</label>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <input name="img" id="img" value="{{ request.form[img]  }}" class="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required />
+                <label for="img" class="peer-focus:font-medium absolute text-sm  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Image URL</label>
+            </div>
+            <button class="px-5 py-1 w-fit bg-sky-700 hover:bg-sky-500 text-slate-100 text-sm font-bold border-b-4 border-sky-700 hover:border-sky-400 rounded">
+                <input class="" type="submit" value="Save">
+            </button> 
+        </form>
+
+    </div>
+    <hr>
+
 {% endblock %}

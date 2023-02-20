@@ -1,21 +1,42 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}Edit "{{ post['title'] }}"{% endblock %}</h1>
+    <div class="flex justify-between px-5 py-3 ml-4 mr-4">
+        <h1 class="text-xl text-slate-400">{% block title %}Edit "{{ post['title'] }}"{% endblock %}</h1>
+    </div>
 {% endblock %} 
 
 {% block content %} 
-    <form method="post">
-        <label for="title">Title</label>
-        <input name="title" id="title" value="{{ request.form[title] or post['title'] }}" required>
-        <label for="body">Body</label>
-        <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>
-        <label for="img">Image URL</label>
-        <input name="img" id="img" value="{{ request.form['img'] }}" >
-        <input type="submit" value="Save">
-    </form>
+    <div>
+        <form method="post" class="flex flex-col py-2 text-gray-400 w-1/2 ml-10">
+            <!-- <label class="px-5 py-1 ml-7" for="title">Title</label>
+            <input class="px-5 py-1 ml-7 w-fit" name="title" id="title" value="{{ request.form[title] or post['title'] }}" required>
+            <label class="px-5 py-1 mt-5 ml-7" for="body">Body</label>
+            <textarea class="px-5 py-1 ml-7 w-1/2" name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea> -->
+            <div class="relative z-0 w-full mb-6 group">
+                <input name="title" id="title" value="{{ request.form[title] or post['title'] }}" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" required />
+                <label for="title" class="peer-focus:font-medium absolute text-sm  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <textarea name="body" id="body" class="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">{{ request.form['body'] or post['body'] }}</textarea>
+                <label for="body" class="peer-focus:font-medium absolute text-sm  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Body</label>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <input name="img" id="img" value="{{ request.form[img] or post['img'] }}" class="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required />
+                <label for="img" class="peer-focus:font-medium absolute text-sm  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Image URL</label>
+            </div>
+            <button class="px-5 py-1 w-fit bg-sky-700 hover:bg-sky-500 text-slate-100 text-sm font-bold border-b-4 border-sky-700 hover:border-sky-400 rounded">
+                <input class="" type="submit" value="Save">
+            </button> 
+        </form>
+        <button class="px-5 py-1 ml-10 w-fit bg-red-800 hover:bg-red-600 text-slate-100 text-sm font-bold m-1 p-1 border-b-4 border-red-700 hover:border-red-500 rounded">
+            <form action="{{ url_for('main.delete', id=post['id']) }}" method="post">
+                <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+            </form>
+        </button>
+    </div>
     <hr>
-    <form action="{{ url_for('main.delete', id=post['id']) }}" method="post">
-        <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
-    </form>
+
+
+
 {% endblock %}
