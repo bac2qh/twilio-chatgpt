@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <div class="flex justify-center px-5 py-3 mt-10">
+        <h1 class="text-3xl text-slate-700">{% block title %}Voice GPT{% endblock %}</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="flex flex-col w-1/2 mx-auto">
+        <h2 class="font-bold text-xl py-2 mt-2">Introduction</h2>
+        <p class="">
+            As it stands now, people can only access/interact with the ChatGPT
+            over their website, not very chat-ish in this era of smartphones. 
+            I want to make it available on mobile through SMS so that people can 
+            combine the power of language models with modern day smartphones' 
+            powerful voice-to-text capabilities. 
+            <span class="italic">
+                Basically allowing people to "talk" to ChatGPT.
+            </span>
+        </p>
+
+        <h2 class="font-bold text-xl py-2 mt-2">How to use this app?</h2>
+        <p>
+            I am glad you asked! You can text to <span class="font-bold">+18559933877</span>
+            from your mobile phone <span class="font-bold uppercase">(normal text rate may apply) </span>
+            and start chatting with ChatGPT. 
+            You can also use voice-to-text functions built-in to talk with ChatGPT. 
+            How amazing is that?! 
+            <br>
+            You can also view your 
+        </p>
+        <h2 class="font-bold text-xl py-2 mt-2">ChatGPT</h2>
+        <p>
+            ChatGPT in a nutshell is the most powerful natural language model 
+            that's publicly available. Simply put, it's future happening in front 
+            of your eyes. 
+        </p>
+        <h2 class="font-bold text-xl py-2 mt-2">Twilio</h2>
+        <p>
+            Twilio provides amazing APIs that allow interactions between web Apps and SMS. 
+            Using twilio's services, I could  
+        </p>
+        <ul class="list-disc list-inside">
+            <li>
+                Obtain a phone number 
+            </li>
+            <li>
+                receive text messages from the phone number 
+            </li>
+            <li>
+                port text received over the cloud server to ChatGPT's API
+            </li>
+            <li>
+                send back ChatGPT's response to the original sender 
+            </li>
+        </ul>
+    </div>
+{% endblock %} 

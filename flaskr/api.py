@@ -12,11 +12,8 @@ from twilio.twiml.messaging_response import MessagingResponse
 
 import os
 import openai
-from dotenv import load_dotenv
 
 bp = Blueprint('api', __name__, url_prefix='/api')
-
-load_dotenv()
 
 
 @bp.route("/sms/receive", methods=['GET', 'POST'])
@@ -59,7 +56,7 @@ def SMS_received():
 
 def chatgpt_send_message(message):
 
-    openai.api_key = os.getenv("OPENAI_API_KEY")
+    # openai.api_key = os.getenv("OPENAI_API_KEY")
 
     out = openai.Completion.create(
         model="text-davinci-003",
