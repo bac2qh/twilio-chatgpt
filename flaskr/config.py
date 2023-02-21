@@ -1,12 +1,14 @@
 import os
 import json
 
-with open('../.env') as config_file:
+with open('/etc/bac2qh-twilio-chatgpt.json')as config_file:
     config = json.load(config_file)
 
 
 class Config:
     SECRET_KEY = config.get('SECRET_KEY')
+    OPENAI_API_KEY = config.get('OPENAI_API_KEY')
+    print(OPENAI_API_KEY)
     # SQLALCHEMY_DATABASE_URI = config.get('SQLALCHEMY_DATABASE_URI')
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587

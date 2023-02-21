@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>IPPP Final Project</title>
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:600,500,400,300,200,100,400italic0&subset=latin,greek,latin-ext' rel='stylesheet' type='text/css'>
+  <link href="project.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <ul class="nav">
+    <li><a href="{{ url_for('project.chicago_crimes_introduction')}}" class="active">Introduction</a></li>
+    <li><a href="{{ url_for('project.chicago_crimes_analysis' )}}" class="active">Statistical Analysis</a></li>
+    <li><a href="{{ url_for('project.chicago_crimes_map' )}}" class="active">Map of Chicago</a></li>
+  </ul>
+
+<h1>Socioeconomics and Crime: A Case Study of Chicago</h1>
+
+<section id = "Introduction">
+<div class = "Summary">
+<h1>Summary</h1>
+<p>
+The relationship between socioeconomic status and crime is an important topic for public policy. In this project, we conducted a statistical analysis using data from the City of Chicago to explore the potential correlation between different dimensions of socioeconomic status and crime rates at the community-level. By running a series of regressions, we found that it is not the total number of crime but the type of crime that is correlated to the socioeconomic factors, and among the seven selected socioecomonic indicators, the crowded housing rate and the unemployment rate seems to matter more than the others.
+</p>
+</div>
+
+<div class = "Motivation">
+<h1>Motivation</h1>
+<p>
+Chicago has long been criticized for its high crime rate. However, when we broke down Chicago's total number of crime to the communities, we found out a striking disparity among communities.
+Except Montclaire, the next top five communites have an average of 11,850.6 crimes per year, comparing to 656.5 in the lowest five communities on average.
+</p>
+<p>
+
+<img src="Crime_Rate_per_Year_Final.pdf" alt = "Total Crime" width="50%" height = "60%" align="right">
+<img src="Total_Crime_Rate.png" alt = "Total Crime_map" width="50%" height = "60%" align="right">
+<p>
+<p>
+Among all the seventy-seven communties, Monclaire appears to be an outlier, enjoying a number of crime per year almost twice as large as the second-ranked community, and about 67 occurrence of crime per day.
+</p>
+<p>
+On the Wikipedia page for <a href="https://en.wikipedia.org/wiki/Montclare,_Chicago">Montcliar, Chicago</a>, the median household income is $6,238 lower than the average level in Chicago, and 24.4% of the residents there earned less than $25,000 per year. The unemployment rate is 12.3%, comparing to 5% at the city-level.
+</p>
+<p>
+We suspect that the demographic features of the community could partially explain the extreme high amount of crime in the area. And we would like to systematically examine the relationship between the socioecomonic indicators and the number of crime at the community-level.
+</p>
+
+</div>
+
+<div class = "Study">
+<h1>Study Design</h1>
+Question: Whether the number of crime in a community is correlated to its socioecomonic status.
+</p>
+<p>
+Data:
+</p>
+<p>
+<a href="https://data.cityofchicago.org/view/5cd6-ry5g">Crime</a> & <a href="https://data.cityofchicago.org/Health-Human-Services/Census-Data-Selected-socioeconomic-indicators-in-C/kn9c-c2s2">Socioeconomics</a> merged on <a href="https://en.wikipedia.org/wiki/Community_areas_in_Chicago">Community area number</a>.
+</p>
+<p>
+The socioecomonics data set is calculated by Chicago Department of Public Health using census tract-level estimates from the American Community Survey 5-year estimates. The per capita income in the data set was estimated by dividing the aggregate income of the census tracts within the community area by the number of residents. The hardship index is a score that incorporates each of the six selected socioeconomic indicators according to the method described in <a href= "http://www.rockinst.org/pdf/cities_and_neighborhoods/2004-08-an_update_on_urban_hardship.pdf">An Update on Urban Hardship</a>. Scores on the index can range from 1 to 100, with a higher index number representing a greater level of hardship. The scores are standardized according to the data for the 77 community areas, and therefore cannot be compared to scores generated for other jurisdictions.
+</p>
+<p>
+The crime data set is provided by the Chicago Police Department and is recorded on a daily basis. In order to merge with the socioecomonic data set, we calculated the number of crime per year during 2008-2012.
+</p>
+<p>
+Statistical Method: Regression on logit model.
+</p>
+</div>
+
+<div class = "Git">
+<h1>Source Code</h1>
+<p>
+For the <a href="Crime_Total_Reg_Finalized.html">regression analysis</a> of the total number of crime on socioeconomic indicators.
+</p>
+<p>
+For the <a href="Crime_Type_Reg_Finalized.html">regression analysis</a> of different types of crime on socioeconomic indicators.
+</p>
+<p>
+For the <a href="Crime_Type_Plot_Finalized.html">plot</a> of maps.
+</p>
+</div>
+
+</section>
+
+
+</body>
+
+</html>

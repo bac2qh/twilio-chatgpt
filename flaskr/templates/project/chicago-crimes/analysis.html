@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>IPPP Final Project</title>
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:600,500,400,300,200,100,400italic0&subset=latin,greek,latin-ext' rel='stylesheet' type='text/css'>
+  <link href="project.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <ul class="nav">
+        <li><a href="{{ url_for('project.chicago_crimes_introduction')}}" class="active">Introduction</a></li>
+        <li><a href="{{ url_for('project.chicago_crimes_analysis' )}}" class="active">Statistical Analysis</a></li>
+        <li><a href="{{ url_for('project.chicago_crimes_map' )}}" class="active">Map of Chicago</a></li>
+      </ul>
+
+<h1>Statistical Analysis</h1>
+
+<section id = "Statistical Analysis">
+
+<div class = "Total Number of Crime">
+<h1>Total Number of Crime</h1>
+<p>
+We started our statistical analysis from doing the regressional analysis (regplot) for the sum of all kinds of crimes VS. hardship index from socioeconomic status indicators.The result was amazing, basically nothing. The regression line is almost horizontal. This was not expected.
+</p>
+<p>
+We then proceeded to plot the sum of all kinds of crimes VS. all other six different kinds of socioeconomic status indicators. Below is the result:
+</p>
+<p>
+<img src="regression_total.png" alt = "regression_total" width="50%" height = "60%" align="left">
+</p>
+<p>
+Generally, the results are not ideal. It seems that different socioecomonic aspects have no statistically significant effect on the incidence of crime, which is out of our expectation.
+</p>
+</div>
+
+<p>
+We started to question our data and whether we treated them correctly. Then we realize that a good portion of our socioeconomic status data are in percentage. Statistically speaking, it does not make sense to use percentage as they are. It usually needs to be logit-transformed, which is the inverse of the sigmoidal "logistic" function or logistic transform used in mathematics, especially in statistics.
+</p>
+<p>
+After doing this as our first step into the world of data processing, we gladly found out, comparing the logit-transformed regression analysis VS. the orginal regression analysis, there were some very subtle difference. But, none were significant at even 0.1 level. By this time we realize it is probably very hard to see the relationship between sum of crimes and socioeconomic status at a community area level.
+</p>
+<p>
+We thought about two other ways. First is to find census tract level data. We looked through ACS but could not find census tract data for socioeconomic status working for us (The crime data on the other hand was more than enough). At the same time, we noticed that there is a great disparity with respect to the type of crimes in Chicago. Thus, we started looking at primary_type data.
+</p>
+
+<div class = "Crime by Type">
+<h1>Crime by Primary Type</h1>
+<p>30 Types of crimes are too much for our analysis, so we picked 7 out of them:
+Homicide,
+Weapons Violation,
+Theft,
+Kidnapping,
+Narcotics,
+Robbery,
+Sex Offense.
+
+The selection is mostly based on our experience in Chicago for the past year and common sense.
+</p>
+<p>
+Then we masked the dataset for 7 times to generate 7 different dataset showing only one certain type of crimes listed above. Then of course we logit-transform the dataset once again. The plotting were much better this time. By running our carefully designed for loop, we generated 7 * 7 = 49 plots, for every single one to one relationship.
+</p>
+<p>
+The first we got was a percent housing crowded vs. homicide plot. Like the rest of the 49 plots, was not horizontal. It was very clear that these 49 plots all shows one general idea, The poorer, worse, harder, tougher or by any means not so great community area tend to have higher number of crimes. Some of them had pretty deep slope. (Please check out the Jupyter Notebook for all the graphs.)
+</p>
+<p>
+These all looked very good but are not the whole story for our statistical analysis. We then did the summary describing the fit of regression model for every multiple regression. We picked out the 7 types of crimes we care about, and did the ols fit analysis against all 7 kinds of social economic status. One tricky part here was the Hardship Index. By the data source's definition, the hardship index is the generalization of the other 6 socioeconomic status. Therefore we have to do the analysis for hardship index and other 6 socioeconomic status separately. Just like what we had from the analysis of SUMs in the previous part, the hardship index once again failed to show any significant relationship. This remind us once again that we have to go deeper to seek the relationships.
+</p>
+<p>
+Then we did the summaries for the other 6 multiple regressions' fit. The detailed result is available in our webpage and also the source_code folder. Please feel free to check out. In general,
+Homicide - Crowd, Unemp;
+Weapons Violation - Unemp;
+Theft - Crowd, Unemp, Age, Income;
+Kidnapping - Unemp;
+Narcotics - Crowd, Unemp;
+Robbery - Crowd, Unemp, Age;
+Sex Offense - Crowd, Unemp, Age.
+
+with crime type on the left side and socioeconomic indicators on the right side, these are the significant relationships.
+</p>
+<p>
+Keep in mind that the 6 socioeconomic status we included are:
+
+PERCENT OF HOUSING CROWDED;
+PERCENT HOUSEHOLDS BELOW POVERTY;
+PERCENT AGED 16+ UNEMPLOYED;
+PERCENT AGED 25+ WITHOUT HIGH SCHOOL DIPLOMA;
+PERCENT AGED UNDER 18 OR OVER 64;
+PER CAPITA INCOME
+</p>
+
+<p>
+Here, we use homicide as an example. Below is the result:
+</p>
+<p>
+<img src="homicide_reg.png" alt = "homicide_reg" width="50%" height = "60%" align="left">
+</p>
+</div>
+
+<p>
+The result shows that, most of the time, with only Unemployed or Housing Crowded significant, other factors we conventionally think are important, are actually not important. For example, I was personally very interested in the Per Capita Income, but it was never ever significant in our analysis.
+</p>
+<p>
+One possible analysis is that most of the crimes in Chicago are related to gangs. Being in a gang, you are in it full-time. So you have to be unemployed to be in a
+gang, or get involved in crimes. Higher percentage in Housing Crowded means higher likelihood for frictions among the tribes and gangs. They are more prone to conflicts. For my personal favorite, Per Capita Income, members in gangs may actually have very good income, which offsets the general 'low income, high crime rate' trend.
+</p>
+<p>
+You can check out our Jupyter Notebook in the source code file to relive our wonderful journey of statistical analysis.
+</p>
+</div>
+
+
+</section>
+
+
+</body>
+
+</html>

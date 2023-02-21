@@ -1,7 +1,7 @@
 import functools
 
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, Flask, session, url_for
+    Blueprint, flash, current_app, g, redirect, render_template, request, Flask, session, url_for
 )
 
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -35,15 +35,12 @@ def SMS_receive():
     except:
         print('no message received')
 
-    print(body)
-    print(from_)
-    print(to_)
-
     if body:
         resp = MessagingResponse()
-        resp.message(f"{from_} sent {to_} a message: {body}")
+        out = chatgpt_send_message(body)['choices'][0]['text']
+        print(out)
+        resp.message(f"ChatGPT response to {from_}: {out}")
     return str(resp)
-    # return render_template('api/sms/receive.html')
 
 
 @bp.route("/sms/received", methods=['GET', 'POST'])
@@ -52,13 +49,13 @@ def SMS_received():
     latest_message = db.execute(
         'SELECT * from sms ORDER BY created DESC LIMIT 1'
     ).fetchone()
-
+    print(current_app.config['OPENAI_API_KEY'])
     return render_template('api/sms/received.html', latest_message=latest_message)
 
 
 def chatgpt_send_message(message):
 
-    # openai.api_key = os.getenv("OPENAI_API_KEY")
+    openai.api_key = current_app.config['OPENAI_API_KEY']
 
     out = openai.Completion.create(
         model="text-davinci-003",

@@ -10,23 +10,23 @@ this file serves as:
 
 import os
 from flask import Flask
+from flaskr.config import Config
 
 sms = []
 
 
-def create_app(test_config=None):
+def create_app(config_class=Config, test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+    app.config.from_object(Config)
     app.config.from_mapping(
-        SECRET_KEY='dev',  # to be overriden
         DATABASE=os.path.join(app.instance_path, 'flask.sqlite'),
     )
-
-    if not test_config:
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        # load the test config
-        app.config.from_mapping(test_config)
+    # if not test_config:
+    #     app.config.from_pyfile('config.py', silent=True)
+    # else:
+    #     # load the test config
+    #     app.config.from_mapping(test_config)
 
     # make sure instance folder exists
     try:
