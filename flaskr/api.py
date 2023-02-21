@@ -33,7 +33,7 @@ def SMS_receive():
         )
         db.commit()
     except:
-        raise Exception("Error inserting into sms table")
+        print('no message received')
 
     print(body)
     print(from_)
