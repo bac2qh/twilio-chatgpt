@@ -39,9 +39,11 @@ def SMS_receive():
     print(from_)
     print(to_)
 
-    resp = MessagingResponse()
-    resp.message(f"{from_} sent {to_} a message: {body}")
-    return render_template('api/sms/receive.html')
+    if body:
+        resp = MessagingResponse()
+        resp.message(f"{from_} sent {to_} a message: {body}")
+    return str(resp)
+    # return render_template('api/sms/receive.html')
 
 
 @bp.route("/sms/received", methods=['GET', 'POST'])
