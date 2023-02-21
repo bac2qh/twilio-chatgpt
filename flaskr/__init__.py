@@ -11,6 +11,8 @@ this file serves as:
 import os
 from flask import Flask
 
+sms = []
+
 
 def create_app(test_config=None):
     # create and configure the app
@@ -45,5 +47,8 @@ def create_app(test_config=None):
     from . import main
     app.register_blueprint(main.bp)
     app.add_url_rule('/', endpoint='index')
+
+    from . import api
+    app.register_blueprint(api.bp)
 
     return app

@@ -1,0 +1,14 @@
+<!-- extends replaces the code in base -->
+{% extends 'base.html' %}
+
+{% block header %}
+    <div class="flex justify-between px-5 py-3 ml-4 mr-4">
+        <h1 class="text-3xl text-slate-400">{% block title %}SMS received{% endblock %}</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <p>{{ latest_message['receiver_number']}} received {{ latest_message['body'] }} from {{ latest_message['sender_number'] }}  </p>
+    </div>
+{% endblock %} 
