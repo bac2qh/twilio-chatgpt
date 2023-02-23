@@ -8,7 +8,6 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from flaskr.db import get_db
 
-from twilio.twiml.messaging_response import MessagingResponse
 
 import os
 import openai
@@ -36,21 +35,34 @@ def SMS_receive():
         print('no message received')
 
     if body:
-        resp = MessagingResponse()
         out = chatgpt_send_message(body)['choices'][0]['text']
-        print(out)
-        resp.message(f"ChatGPT response to {from_}: {out}")
-    return str(resp)
+        db.execute(
+            "INSERT INTO sms (body, sender_number, receiver_number) VALUES (?,?,?)",
+            (out, 'ChatGPT', from_)
+        )
+        db.commit()
+        # f"ChatGPT response to {from_}: {out}"
+    return 'message logged'
 
 
 @bp.route("/sms/received", methods=['GET', 'POST'])
-def SMS_received():
-    db = get_db()
-    latest_message = db.execute(
-        'SELECT * from sms ORDER BY created DESC LIMIT 1'
-    ).fetchone()
-    print(current_app.config['OPENAI_API_KEY'])
-    return render_template('api/sms/received.html', latest_message=latest_message)
+def SMS_received(sender_number=None):
+    if request.method == 'POST':
+        sender_number = request.form['sender_number']
+        if sender_number != None:
+            db = get_db()
+            Q = db.execute(
+                'SELECT * from sms WHERE sender_number = ?'
+                'ORDER BY created DESC LIMIT 1',
+                (sender_number, )
+            ).fetchone()
+            A = db.execute('SELECT * from sms WHERE sender_number="ChatGPT"'
+                           ' and receiver_number = ?'
+                           ' ORDER BY created DESC LIMIT 1',
+                           (sender_number, )
+                           ).fetchone()
+            return render_template('api/sms/received.html', Q=Q, A=A)
+    return render_template('api/sms/received.html', Q=None, A=None)
 
 
 def chatgpt_send_message(message):

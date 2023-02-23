@@ -8,7 +8,23 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-        <p>{{ latest_message['receiver_number']}} received {{ latest_message['body'] }} from {{ latest_message['sender_number'] }}  </p>
-    </div>
+    {% if Q==None %}
+        <form class="py-2 text-gray-400 ml-10 w-1/5" method="post">
+            <div class="relative z-0 w-full mb-6 group">
+                <input name="sender_number" id="sender_number" class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                <label for="sender" class="peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Your Phone Number</label>
+            </div>
+            <button class="px-5 py-1 w-fit bg-sky-700 hover:bg-sky-500 text-slate-100 font-bold border-b-4 border-sky-700 hover:border-sky-400 rounded">
+                <input class="" type="submit" value="query">
+            </button> 
+        </form>
+    {% else %}
+        <div class="flex flex-col ml-10 p-4 w-1/2">
+            <p class="py-2">Question: {{ Q['body'] }}</p>
+            <p class="py-2">ChatGPT response: {{ A['body'] }}</p>
+            <hr>
+        </div> 
+    {% endif %}
+
+
 {% endblock %} 

@@ -22,13 +22,14 @@
 
         <h2 class="font-bold text-xl py-2 mt-2">How to use this app?</h2>
         <p>
-            I am glad you asked! You can text to <span class="font-bold">+18559933877</span>
+            I am glad you asked! You can text to <span class="font-bold">+18554592159</span>
             from your mobile phone <span class="font-bold uppercase">(normal text rate may apply) </span>
             and start chatting with ChatGPT. 
-            You can also use voice-to-text functions built-in to talk with ChatGPT. 
-            How amazing is that?! 
             <br>
-            You can also view your 
+            <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-lg font-medium text-gray-200 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200">
+                <a href="{{ url_for('api.SMS_received')}}">Start Chatting</a>
+            </button>
+            
         </p>
         <h2 class="font-bold text-xl py-2 mt-2">ChatGPT</h2>
         <p>
