@@ -31,165 +31,201 @@
 </div>
 <div class="w-1/2 mx-auto" id="myTabContent">
   <div class="hidden p-4 rounded-l " id="introduction" role="tabpanel" aria-labelledby="profile-tab">
-    <h1>Socioeconomics and Crime: A Case Study of Chicago</h1>
   
-    <h2>Summary</h2>
-    <p>
+    <h2 class="font-bold text-xl py-2 mt-2">Summary</h2>
+    <p class="mb-2">
       The relationship between socioeconomic status and crime is an important topic for public policy. In this project, we conducted a statistical analysis using data from the City of Chicago to explore the potential correlation between different dimensions of socioeconomic status and crime rates at the community-level. By running a series of regressions, we found that it is not the total number of crime but the type of crime that is correlated to the socioeconomic factors, and among the seven selected socioecomonic indicators, the crowded housing rate and the unemployment rate seems to matter more than the others.
     </p>
 
-  
-    <div class = "Motivation">
-    <h1>Motivation</h1>
-    <p>
-    Chicago has long been criticized for its high crime rate. However, when we broke down Chicago's total number of crime to the communities, we found out a striking disparity among communities.
-    Except Montclaire, the next top five communites have an average of 11,850.6 crimes per year, comparing to 656.5 in the lowest five communities on average.
+    <h2 class="font-bold text-xl py-2 mt-2">Motivation</h2>
+    <p class="py-2">
+        Chicago has long been criticized for its high crime rate. However, when we broke down Chicago's total number of crime to the communities, we found out a striking disparity among communities.
+        Except Montclaire, the next top five communites have an average of 11,850.6 crimes per year, comparing to 656.5 in the lowest five communities on average.
     </p>
-    <p>
   
-    <img src="Crime_Rate_per_Year_Final.pdf" alt = "Total Crime" width="50%" height = "60%" align="right">
-    <img src="Total_Crime_Rate.png" alt = "Total Crime_map" width="50%" height = "60%" align="right">
-    <p>
-    <p>
+    <img class="w-full" src="https://bac2qh.github.io/ippp_Final_Project/webpage/Total_Crime_Rate.png" alt="Total Crime">
+    <iframe class="w-full aspect-video" src="https://bac2qh.github.io/ippp_Final_Project/webpage/Crime_Rate_per_Year_Final.pdf"></iframe>
+    <p class="py-2">
     Among all the seventy-seven communties, Monclaire appears to be an outlier, enjoying a number of crime per year almost twice as large as the second-ranked community, and about 67 occurrence of crime per day.
     </p>
-    <p>
-    On the Wikipedia page for <a href="https://en.wikipedia.org/wiki/Montclare,_Chicago">Montcliar, Chicago</a>, the median household income is $6,238 lower than the average level in Chicago, and 24.4% of the residents there earned less than $25,000 per year. The unemployment rate is 12.3%, comparing to 5% at the city-level.
+    <p class="py-2">
+    On the Wikipedia page for <a class="underline italic text-blue-800" href="https://en.wikipedia.org/wiki/Montclare,_Chicago">Montcliar, Chicago</a>, the median household income is $6,238 lower than the average level in Chicago, and 24.4% of the residents there earned less than $25,000 per year. The unemployment rate is 12.3%, comparing to 5% at the city-level.
     </p>
-    <p>
+    <p class="py-2">
     We suspect that the demographic features of the community could partially explain the extreme high amount of crime in the area. And we would like to systematically examine the relationship between the socioecomonic indicators and the number of crime at the community-level.
     </p>
-  
-    </div>
-  
-    <div class = "Study">
-    <h1>Study Design</h1>
-    Question: Whether the number of crime in a community is correlated to its socioecomonic status.
-    </p>
-    <p>
-    Data:
-    </p>
-    <p>
-    <a href="https://data.cityofchicago.org/view/5cd6-ry5g">Crime</a> & <a href="https://data.cityofchicago.org/Health-Human-Services/Census-Data-Selected-socioeconomic-indicators-in-C/kn9c-c2s2">Socioeconomics</a> merged on <a href="https://en.wikipedia.org/wiki/Community_areas_in_Chicago">Community area number</a>.
-    </p>
-    <p>
-    The socioecomonics data set is calculated by Chicago Department of Public Health using census tract-level estimates from the American Community Survey 5-year estimates. The per capita income in the data set was estimated by dividing the aggregate income of the census tracts within the community area by the number of residents. The hardship index is a score that incorporates each of the six selected socioeconomic indicators according to the method described in <a href= "http://www.rockinst.org/pdf/cities_and_neighborhoods/2004-08-an_update_on_urban_hardship.pdf">An Update on Urban Hardship</a>. Scores on the index can range from 1 to 100, with a higher index number representing a greater level of hardship. The scores are standardized according to the data for the 77 community areas, and therefore cannot be compared to scores generated for other jurisdictions.
-    </p>
-    <p>
-    The crime data set is provided by the Chicago Police Department and is recorded on a daily basis. In order to merge with the socioecomonic data set, we calculated the number of crime per year during 2008-2012.
-    </p>
-    <p>
-    Statistical Method: Regression on logit model.
-    </p>
-    </div>
-  
-    <div class = "Git">
-    <h1>Source Code</h1>
-    <p>
-    For the <a href="Crime_Total_Reg_Finalized.html">regression analysis</a> of the total number of crime on socioeconomic indicators.
-    </p>
-    <p>
-    For the <a href="Crime_Type_Reg_Finalized.html">regression analysis</a> of different types of crime on socioeconomic indicators.
-    </p>
-    <p>
-    For the <a href="Crime_Type_Plot_Finalized.html">plot</a> of maps.
-    </p>
-    </div>
-  </div>
-  <div class="hidden p-4 rounded-lg" id="analysis" role="tabpanel" aria-labelledby="dashboard-tab">
-      <h1>Statistical Analysis</h1>
-        <div class = "Total Number of Crime">
-          <h1>Total Number of Crime</h1>
-          <p>
-            We started our statistical analysis from doing the regression's analysis (regplot) for the sum of all kinds of crimes VS. hardship index from socioeconomic status indicators.The result was amazing, basically nothing. The regression line is almost horizontal. This was not expected.
-          </p>
-          <p>
-            We then proceeded to plot the sum of all kinds of crimes VS. all other six different kinds of socioeconomic status indicators. Below is the result:
-          </p>
-          <p>
-            <img src="regression_total.png" alt = "regression_total" width="50%" height="60%">
-          </p>
-          <p>
-            Generally, the results are not ideal. It seems that different socioecomonic aspects have no statistically significant effect on the incidence of crime, which is out of our expectation.
-          </p>
-        </div>
-        
-        <p>
-          We started to question our data and whether we treated them correctly. Then we realize that a good portion of our socioeconomic status data are in percentage. Statistically speaking, it does not make sense to use percentage as they are. It usually needs to be logit-transformed, which is the inverse of the sigmoidal "logistic" function or logistic transform used in mathematics, especially in statistics.
-        </p>
-        <p>
-          After doing this as our first step into the world of data processing, we gladly found out, comparing the logit-transformed regression analysis VS. the orginal regression analysis, there were some very subtle difference. But, none were significant at even 0.1 level. By this time we realize it is probably very hard to see the relationship between sum of crimes and socioeconomic status at a community area level.
-        </p>
-        <p>
-          We thought about two other ways. First is to find census tract level data. We looked through ACS but could not find census tract data for socioeconomic status working for us (The crime data on the other hand was more than enough). At the same time, we noticed that there is a great disparity with respect to the type of crimes in Chicago. Thus, we started looking at primary_type data.
-        </p>
-        
-        <div class = "Crime by Type">
-          <h1>Crime by Primary Type</h1>
-          <p>30 Types of crimes are too much for our analysis, so we picked 7 out of them:
-            Homicide,
-            Weapons Violation,
-            Theft,
-            Kidnapping,
-            Narcotics,
-            Robbery,
-            Sex Offense.
-            
-            The selection is mostly based on our experience in Chicago for the past year and common sense.
-          </p>
-          <p>
-            Then we masked the dataset for 7 times to generate 7 different dataset showing only one certain type of crimes listed above. Then of course we logit-transform the dataset once again. The plotting were much better this time. By running our carefully designed for loop, we generated 7 * 7 = 49 plots, for every single one to one relationship.
-          </p>
-          <p>
-            The first we got was a percent housing crowded vs. homicide plot. Like the rest of the 49 plots, was not horizontal. It was very clear that these 49 plots all shows one general idea, The poorer, worse, harder, tougher or by any means not so great community area tend to have higher number of crimes. Some of them had pretty deep slope. (Please check out the Jupyter Notebook for all the graphs.)
-          </p>
-          <p>
-            These all looked very good but are not the whole story for our statistical analysis. We then did the summary describing the fit of regression model for every multiple regression. We picked out the 7 types of crimes we care about, and did the ols fit analysis against all 7 kinds of social economic status. One tricky part here was the Hardship Index. By the data source's definition, the hardship index is the generalization of the other 6 socioeconomic status. Therefore we have to do the analysis for hardship index and other 6 socioeconomic status separately. Just like what we had from the analysis of SUMs in the previous part, the hardship index once again failed to show any significant relationship. This remind us once again that we have to go deeper to seek the relationships.
-          </p>
-          <p>
-            Then we did the summaries for the other 6 multiple regressions' fit. The detailed result is available in our webpage and also the source_code folder. Please feel free to check out. In general,
-            Homicide - Crowd, Unemp;
-            Weapons Violation - Unemp;
-            Theft - Crowd, Unemp, Age, Income;
-            Kidnapping - Unemp;
-            Narcotics - Crowd, Unemp;
-            Robbery - Crowd, Unemp, Age;
-            Sex Offense - Crowd, Unemp, Age.
-            
-            with crime type on the left side and socioeconomic indicators on the right side, these are the significant relationships.
-          </p>
-          <p>
-            Keep in mind that the 6 socioeconomic status we included are:
-            PERCENT OF HOUSING CROWDED;
-            PERCENT HOUSEHOLDS BELOW POVERTY;
-            PERCENT AGED 16+ UNEMPLOYED;
-            PERCENT AGED 25+ WITHOUT HIGH SCHOOL DIPLOMA;
-            PERCENT AGED UNDER 18 OR OVER 64;
-            PER CAPITA INCOME
-          </p>
-          <p>
-            Here, we use homicide as an example. Below is the result:
-          </p>
-          <p>
-            <img src="homicide_reg.png" alt = "homicide_reg" width="50%" height = "60%" align="left">
-          </p>
-        </div>
-        <p>
-          The result shows that, most of the time, with only Unemployed or Housing Crowded significant, other factors we conventionally think are important, are actually not important. For example, I was personally very interested in the Per Capita Income, but it was never ever significant in our analysis.
-        </p>
-        <p>
-          One possible analysis is that most of the crimes in Chicago are related to gangs. Being in a gang, you are in it full-time. So you have to be unemployed to be in a
-          gang, or get involved in crimes. Higher percentage in Housing Crowded means higher likelihood for frictions among the tribes and gangs. They are more prone to conflicts. For my personal favorite, Per Capita Income, members in gangs may actually have very good income, which offsets the general 'low income, high crime rate' trend.
-        </p>
-        <p>
-          You can check out our Jupyter Notebook in the source code file to relive our wonderful journey of statistical analysis.
-        </p>
-  </div>
 
-  <div class="hidden p-4 rounded-lg " id="settings" role="tabpanel" aria-labelledby="settings-tab">
-    <p>testing</p>
-  </div>
+    <h2 class="font-bold text-xl py-2 mt-2">Study Design</h2>
+    <p class="py-2">
+        Out goal for this project is to understand whether there is a correlation 
+        between a community's different crime rates and its socioecomonc status
+    </p>
+    <p class="py-2">
+        We acquired the dataset from Chicago's government API containing 5-year American Community 
+        Servey data and some precalculated indexes by the Chicago Department of Public Health(CDPH). 
+    </p>
+    <p class="py-2">
+        The per capita income in the data set was estimated by dividing the aggregate 
+        income of the census tracts within the community area by the number of residents.
+    </p>
+        According to CDPH's report <a class="underline italic text-blue-800" href= "http://www.rockinst.org/pdf/cities_and_neighborhoods/2004-08-an_update_on_urban_hardship.pdf">An Update on Urban Hardship</a> 
+        The hardship index is a combined score of six selected socioeconomic indicators, ranging from 
+         1 to 100, with the higher score representing a greater level of hardship. 
+        The scores are standardized according to the data for the 77 community areas, 
+        and therefore cannot be compared to scores generated for other jurisdictions.
+    </p>
+    <p class="py-2">
+        The crime data set is provided by the Chicago Police Department and is recorded on a daily basis. In order to merge with the socioecomonic data set, we calculated the number of crime per year during 2008-2012.
+    </p>
+    <h2 class="font-bold text-xl py-2 mt-2">Source Code</h2>
+    <ul class="list-disc list-inside">
+        <li class="flex py-1">
+            <p class="my-auto mr-2">
+                <span class="font-bold">Total number of crimes</span> on socioeconomic indicators
+            </p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <a href="https://bac2qh.github.io/ippp_Final_Project/webpage/Crime_Total_Reg_Finalized.html"></a> 
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+        </li>
+        <li class="flex py-1">
+            <p class="my-auto mr-2">
+                <span class="font-bold">Different types of crimes</span> on socioeconomic indicators
+            </p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <a href="https://bac2qh.github.io/ippp_Final_Project/webpage/Crime_Total_Reg_Finalized.html"></a> 
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+        </li>
+        <li class="flex py-1">
+            <p class="my-auto mr-2">
+                <span class="font-bold">Different types of crimes</span> on socioeconomic indicators
+            </p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <a href="https://bac2qh.github.io/ippp_Final_Project/webpage/Crime_Type_Plot_Finalized.html"></a> 
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+        </li>
+    </ul>
+    </div>
+    <div class="hidden p-4 rounded-lg" id="analysis" role="tabpanel" aria-labelledby="dashboard-tab">
+        <h2 class="font-bold text-xl py-2 mt-2">Total Number of Crime</h2>
+            <p class="py-2">
+                We started our statistical analysis from doing the regression's analysis (regplot) 
+                for the sum of all kinds of crimes VS. hardship index from socioeconomic status indicators.
+                The result was amazing, basically nothing. 
+                The regression line is almost horizontal. This was not expected.
+            </p>
+            <p class="py-2">
+                We then proceeded to plot the sum of all kinds of crimes VS. all other six different kinds 
+                of socioeconomic status indicators. Result is shown below: 
+            </p>
+            <img class="py-2 w-full" src="https://bac2qh.github.io/ippp_Final_Project/webpage/regression_total.png" alt="regression_total">
+            <p class="py-2">
+                It seems that different socioecomonic aspects have no statistically significant effect on the incidence of crime.
+            </p>
+            <p class="py-2">
+                We then took absolute value and the log transformation the input data and measured 
+                them against the crimes rates in percentage and count.  
+                No result is found to be statically significant. 
+            </p class="py-2">
+            <p class="py-2">
+                Our guess for this was that the correlations were embedded at a more granular geographical level. 
+                Unfortunately there was no data available in census block group or smaller geographical units so 
+                we could not validate this theory. 
+            </p>
+        
+        <h2 class="font-bold text-xl py-2 mt-2">Crimes by Primary Type</h2>
+            <p class="py-2">
+                We picked 7 more frequent kinds crimes out of the 30 in total. They are 
+            </p>
+            <ul class="py-2 list-disc list-inside w-1/2 flex flex-wrap">
+                <li class="px-2">Homicide</li>
+                <li class="px-2">Weapons Violation</li>
+                <li class="px-2">Theft</li>
+                <li class="px-2">Kidnapping</li>
+                <li class="px-2">Narcotics</li>
+                <li class="px-2">Robbery</li>
+                <li class="px-2">Sex Offense</li>
+            </ul>
+            <p class="py-2">
+                We picked 6 features as predictors for this regressional study
+            </p>
+            <ul class="py-2 list-disc list-inside flex flex-wrap">
+                <li class="px-2">crowd: percentage of housing crowded</li>
+                <li class="px-2">poverty: percentage of households below poverty</li>
+                <li class="px-2">unemployed: percentage of age 16+ unemployed</li>
+                <li class="px-2">highschool: percentage of age 25+ without high school degree</li>
+                <li class="px-2">working: percentage of people between age 18 and 64</li>
+                <li class="px-2">income: per capita income</li>
+            </ul>
+            <p class="py-2">
+                Then we focused on each individual crime and took the log-transformation for the dataset to study their correlations
+            </p>
 
+            <table class="py-2 w-full text-sm text-left text-gray-500 table-auto">
+                <thead class="text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3">Crime Type</th>
+                    <th scope="col" class="px-6 py-3">Significant Predictors</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        Homicide 
+                    <td class="px-6 py-4">Crowd, Unemployment</td>
+                </tr>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        Weapons Violation 
+                    <td class="px-6 py-4">Unemployment</td>
+                </tr>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        Theft 
+                    <td class="px-6 py-4">Crowd, Unemployment, Age, Income</td>
+                </tr>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        Kidnapping
+                    <td class="px-6 py-4">Unemployment</td>
+                </tr>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        Narcotics 
+                    <td class="px-6 py-4">Crowd, Unemployment</td>
+                </tr>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        Robbery
+                    <td class="px-6 py-4">Crowd, Unemployment, Age</td>
+                </tr>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        Sex Offense 
+                    <td class="px-6 py-4">Crowd, Unemployment, Age</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p class="my-2">
+                The result shows that, most of the time, with only Unemployed or Housing Crowded significant, other factors we conventionally think are important, are actually not important. For example, I was personally very interested in the Per Capita Income, but it was never ever significant in our analysis.
+            </p>
+            <p class="my-2">
+                One possible analysis is that most of the crimes in Chicago are related to gangs. Being in a gang, you are in it full-time. So you have to be unemployed to be in a
+                gang, or get involved in crimes. Higher percentage in Housing Crowded means higher likelihood for frictions among the tribes and gangs. They are more prone to conflicts. For my personal favorite, Per Capita Income, members in gangs may actually have very good income, which offsets the general 'low income, high crime rate' trend.
+            </p>
+            <p class="my-2">
+                You can check out our Jupyter Notebook in the source code file to relive our wonderful journey of statistical analysis.
+            </p>
+    </div>
+
+    <div class="hidden p-4 rounded-lg " id="settings" role="tabpanel" aria-labelledby="settings-tab">
+        <iframe class="py-2 w-full aspect-video" src="https://bac2qh.github.io/ippp_Final_Project/webpage/Number_of_Crimes.html" frameborder="0"></iframe>
+        <p class="mb-2 text-center">Interactive total crime rate heatmap for Chicago</p>
+
+    </div>
 
 {% endblock %}
 
