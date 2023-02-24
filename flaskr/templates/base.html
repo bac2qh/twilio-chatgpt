@@ -1,52 +1,72 @@
 <!doctype html>
 
 <title>{% block title %}{% endblock %}</title> 
-<head>
-    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
-</head>
 
-<nav class="flex justify-between bg-teal-600 border-gray-400 px-2 sm:px-4 py-2.5 rounded ">
-    <div class="container flex flex-wrap items-center justify-between">
-        <a href="https://bulbapedia.bulbagarden.net/wiki/Squirtle_(Pok%C3%A9mon)" class="flex items-center">
-            <img src="{{url_for('static',filename='/HupuBBS_190515095413-1242822577.jpg')}}" class="h-6 mr-3 sm:h-9" alt="Ideas Hub Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-200 ">Ideas Hub</span>
-        </a>
-        <div class="flex flex-wrap" id="navbar-default">
-            <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-gray-800">
-                <li>
-                    <a href="{{ url_for('index') }}" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-sky-400 md:p-0" aria-current="page">Home</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('project.twilio_chatgpt') }}" class="block py-2 pl-3 pr-4 text-gray-300 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Projects</a>
-                </li>
-                <li>
-                    <a href="#" class="block py-2 pl-3 pr-4 text-gray-300 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Photos</a>
-                </li>
-                <li>
-                    <a href="#" class="block py-2 pl-3 pr-4 text-gray-300 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Musics</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="flex flex-wrap mb-auto my-auto text-gray-200" id="navbar-default">
-        <ul>
-            {% if g.user %}
-                <li class="block font-bold"><span>{{ g.user['username'] }}</span></li>
-                <li class="block font-extralight"><a href="{{ url_for('auth.logout') }}">log out</a></li> 
-            {% else %} 
-                <li class="block "><a href="{{ url_for('auth.register') }}">Register</a>
-                <li class="block "><a href="{{ url_for('auth.login') }}">Log In</a>
-            {% endif %} 
-        </ul>
-    </div>
-</nav>
+<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/output.css') }}">
 
-<section class="text-slate-600 font-mono">
-    <header>
+<body>
+    <section class="text-slate-600 font-mono">
+        <nav class="flex overflow-auto justify-between bg-teal-600 border-gray-400 px-2 sm:px-4 py-2.5 rounded">
+            <div class="container flex flex-wrap w-full items-center justify-between">
+                <a href="https://bulbapedia.bulbagarden.net/wiki/Squirtle_(Pok%C3%A9mon)" class="flex items-center">
+                    <img src="{{url_for('static',filename='/HupuBBS_190515095413-1242822577.jpg')}}" class="h-6 mr-3 sm:h-9" alt="Ideas Hub Logo" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap text-gray-200 ">Ideas Hub</span>
+                </a>
+                <div class="flex flex-wrap" id="navbar-dropdown">
+                    <ul class="flex p-4 text-gray-300 border-gray-100 rounded-lg space-x-8 mt-0 text-sm font-medium border-0 bg-gray-800">
+                        <li class="">
+                            <a href="{{ url_for('index') }}" class="block py-2 pl-3 pr-4 text-sky-400 bg-gray-100 rounded " aria-current="page">Home</a>
+                        </li>
+                        <li class="">
+                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between py-2 pl-3 pr-4 font-medium rounded hover:bg-gray-100 border-0 hover:text-blue-700 p-0 w-auto ">
+                                Projects
+                                <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow">
+                                <ul class="py-2 text-sm mx-auto" aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="{{ url_for('project.twilio_chatgpt') }}" class="block px-4 py-2 rounded hover:bg-gray-100 hover:bg-transparent border-0 hover:text-blue-700 ">
+                                            Voice GPT
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('project.chicago')}}" class="block px-4 py-2 rounded hover:bg-gray-100 hover:bg-transparent border-0 hover:text-blue-700">
+                                            Chicago crimes study
+                                        </a>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="">
+                            <a href="#" class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 hover:bg-transparent border-0 hover:text-blue-700 p-0 ">Photos</a>
+                        </li>
+                        <li class="">
+                            <a href="#" class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 hover:bg-transparent border-0 hover:text-blue-700 p-0 ">Musics</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-wrap mb-auto my-auto text-gray-200" >
+                <ul>
+                    {% if g.user %}
+                        <li class="block font-bold"><span>{{ g.user['username'] }}</span></li>
+                        <li class="block font-extralight"><a href="{{ url_for('auth.logout') }}">log out</a></li> 
+                    {% else %} 
+                        <li class="block "><a href="{{ url_for('auth.register') }}">Register</a>
+                        <li class="block "><a href="{{ url_for('auth.login') }}">Log In</a>
+                    {% endif %} 
+                </ul>
+            </div>
+        </nav>
         {% block header %}{% endblock %}
-    </header>
-    {% for message in get_flashed_messages() %}
-        <div class="flash">{{ message }}</div>
-    {% endfor %}
-    {% block content %}{% endblock %}
-</section>
+        {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% block content %}{% endblock %}
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+
+</body>

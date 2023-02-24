@@ -32,25 +32,6 @@
                 {% endif %} 
             </div>
         </div>
-        <!-- <article class="flex flex-col py-4">
-            <header class="p-3">
-                <div class="flex justify-between">
-                    <div class="font-light">
-                        <h1 class="text-xl text-sky-400 font-mono">{{ post['title'] }}</h1>
-                        <p class="text-sm font-light italic">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</p>
-                    </div>
-                    {% if g.user['id'] == post['author_id'] %}
-                        <button class="bg-sky-600 hover:bg-blue-400 text-white text-sm font-bold m-1 p-1 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-                            <a class="font-light" href="{{ url_for('main.update', id=post['id']) }}">Edit</a>
-                        </button>
-                    {% endif %} 
-                </div>
-            </header>
-            <p class="px-3 py-1 font-extralight">{{ post['body'] }}</p>
-        </article> -->
-        <!-- {% if not loop.last %}
-            <hr>
-        {% endif %}  -->
     {% endfor %}
     </div>
 

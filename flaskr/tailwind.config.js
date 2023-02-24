@@ -2,7 +2,8 @@
 module.exports = {
   content: [
     "./templates/**/*.html",
-    "./static/src/**/*.js"
+    "./static/src/**/*.js", 
+    "../node_modules/flowbite/**/*.js"
   ],
   presets: [],
   darkMode: 'media', // or 'class'
@@ -954,5 +955,7 @@ module.exports = {
       50: '50',
     },
   },
-  plugins: [],
+  plugins: [
+    require("flowbite/plugin")
+  ],
 }

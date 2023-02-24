@@ -23,7 +23,6 @@ def SMS_receive():
     to_ = request.values.get('To', None)
 
     error = None
-
     db = get_db()
     try:
         db.execute(
