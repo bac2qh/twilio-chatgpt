@@ -1186,6 +1186,18 @@ input:checked + .toggle-bg {
   margin-left: 0.75rem;
 }
 
+.-ml-1 {
+  margin-left: -0.25rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .block {
   display: block;
 }
@@ -1272,6 +1284,10 @@ input:checked + .toggle-bg {
   height: 24rem;
 }
 
+.h-3 {
+  height: 0.75rem;
+}
+
 .max-h-min {
   max-height: -moz-min-content;
   max-height: min-content;
@@ -1316,6 +1332,22 @@ input:checked + .toggle-bg {
 
 .w-1\/4 {
   width: 25%;
+}
+
+.w-7\/12 {
+  width: 58.333333%;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
+.w-10 {
+  width: 2.5rem;
+}
+
+.w-1\/12 {
+  width: 8.333333%;
 }
 
 .max-w-md {
@@ -1733,6 +1765,11 @@ input:checked + .toggle-bg {
   background-color: rgb(180 198 252 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#2557D6\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 87 214 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -1828,6 +1865,16 @@ input:checked + .toggle-bg {
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+}
+
+.px-7 {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .pl-3 {
@@ -2027,6 +2074,11 @@ input:checked + .toggle-bg {
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
+.text-yellow-500 {
+  --tw-text-opacity: 1;
+  color: rgb(194 120 3 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -2175,6 +2227,10 @@ input:checked + .toggle-bg {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-\[\#2557D6\]\/90:hover {
+  background-color: rgb(37 87 214 / 0.9);
+}
+
 .hover\:text-blue-600:hover {
   --tw-text-opacity: 1;
   color: rgb(28 100 242 / var(--tw-text-opacity));
@@ -2241,6 +2297,10 @@ input:checked + .toggle-bg {
 .focus\:ring-gray-200:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(229 231 235 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-\[\#2557D6\]\/50:focus {
+  --tw-ring-color: rgb(37 87 214 / 0.5);
 }
 
 .active\:bg-white:active {
@@ -2434,6 +2494,10 @@ input:checked + .toggle-bg {
   .dark\:focus\:ring-blue-800:focus {
     --tw-ring-opacity: 1;
     --tw-ring-color: rgb(30 66 159 / var(--tw-ring-opacity));
+  }
+
+  .dark\:focus\:ring-\[\#2557D6\]\/50:focus {
+    --tw-ring-color: rgb(37 87 214 / 0.5);
   }
 }
 

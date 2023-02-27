@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <div class="flex justify-between px-5 py-3 ml-4 mr-4">
+        <h1 class="text-3xl text-slate-400">{% block title %}About{% endblock %}</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <div class="flex-col px-8 w-2/3">
+        <h2 class="font-bold text-xl py-1 mt-3">What is this site?</h2>
+        <p>
+            <span class="italic text-yellow-500">
+                This is a fully functional personal hobby project built with Python Flask. 
+            </span>
+            <br>It consists several common key components of modern web applications 
+            <ul class="list-disc list-inside">
+                <li>Properly styled frontend designed with Tailwind CSS</li>
+                <li>Backend database to store user information</li>
+                <li>A web framework to support business logics (in this case allow user to register and post blogs)</li>
+                <li>A remote server to handle http requests</li>
+                <li>Embedded use of popular APIs in the backend</li>
+            </ul>
+        </p>
+        <h2 class="font-bold text-xl py-1 mt-3">Who am I</h2>
+        <p>
+            <span class="italic text-yellow-500">
+                I am a self-taught data scientist and software engineer. I take pride in my professionalism, communication skills and ability to learn and learn quickly. 
+            </span>  
+            I am currently actively looking for Machine Learning Engineer and Software Engineer 
+            opportunities. 
+        </p>
+        <button class="mt-1">
+            <a href="https://www.linkedin.com/in/xink/" target="_blank">
+                <img width="130px" src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="">
+            </a>
+        </button>
+    </div>
+
+
+{% endblock %} 
+
